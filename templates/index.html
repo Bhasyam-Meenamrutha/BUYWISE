@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+<<<<<<< HEAD
         }
         table {
             width: 100%;
@@ -52,6 +53,112 @@
         <input type="text" name="query" placeholder="Enter product to search" required>
         <input type="submit" value="Search">
     </form> -->
+=======
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        th, td {
+            width: 12.5%;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 70%;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            padding: 8px;
+        }
+        #productnameandpic{
+            font-style: none;
+            text-decoration: none;
+            color: black;
+        }
+
+        /* Add modal and blur styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 1200px;
+            max-width: 500px;
+            text-align: center;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .blur {
+            filter: blur(5px);
+        }
+        #productImage{
+            height: 330px;
+            float: left;
+            margin-left: 10px;
+        }
+        #viewproBtn{
+            width: 120px;
+            height: 35px;
+            /* padding: 10px; */
+            background-color: black;
+            color: white;
+            /* margin-top: 90px; */
+            position: absolute;
+            top: 450px;
+            left: 830px;
+            border-radius: 5px;
+        }
+        #productLink{
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<div id="main-content"> <!-- Adding the main-content wrapper -->
+    <center><h1>BUYWISE</h1></center>
+>>>>>>> b3b32a91506480b3a5a9cf24aaa8b123cb49a07c
 
     <table>
         <thead>
@@ -71,15 +178,26 @@
             </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
             {% for i in range(amazon_data|length) %}}
             <tr>
                 <td>{{ amazon_data[i].name }}</td>
+=======
+            {% for i in range(amazon_data|length) %}
+            <tr>
+                <td><a href="javascript:void(0);" onclick="showModal('{{ amazon_data[i].name }}', '{{ amazon_data[i].cost }}', '{{ amazon_data[i].offer }}', '{{ amazon_data[i].image }}', '{{ amazon_data[i].link }}')" id="productnameandpic">{{ amazon_data[i].name }}</a></td>
+                <!-- <td>{{ amazon_data[i].name }}</td> -->
+>>>>>>> b3b32a91506480b3a5a9cf24aaa8b123cb49a07c
                 <td><a href="{{ amazon_data[i].link }}" target="_blank">View Product</a></td>
                 <td>₹ {{ amazon_data[i].cost }}</td>
                 <td>{{ amazon_data[i].offer }}</td>
                 
                 {% if i < flipkart_data|length %}
+<<<<<<< HEAD
                 <td>{{ flipkart_data[i].name }}</td>
+=======
+                <td><a href="javascript:void(0);" onclick="showModal('{{ flipkart_data[i].name }}', '{{ flipkart_data[i].cost }}', '{{ flipkart_data[i].offer }}', '{{ flipkart_data[i].image }}', '{{ flipkart_data[i].link }}')" id="productnameandpic">{{ flipkart_data[i].name }}</a></td>
+>>>>>>> b3b32a91506480b3a5a9cf24aaa8b123cb49a07c
                 <td><a href="{{ flipkart_data[i].link }}" target="_blank">View Product</a></td>
                 <td>{{ flipkart_data[i].cost }}</td>
                 <td>{{ flipkart_data[i].offer }}</td>
@@ -90,5 +208,48 @@
             {% endfor %}
         </tbody>
     </table>
+<<<<<<< HEAD
+=======
+</div>
+
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="productImage" src="" alt="Product Image" >
+        <h2 id="productName"></h2>
+        <p id="productCost"></p>
+        <p id="productOffer"></p>
+        <button id="viewproBtn"> <a id="productLink" href="" target="_blank">Buy Product</a> </button>
+    </div>
+</div>
+
+<script>
+    // Function to show the modal
+    function showModal(name, cost, offer, image, link) {
+        document.getElementById('productName').innerText = name;
+        document.getElementById('productCost').innerText = "Cost: " + cost;
+        document.getElementById('productOffer').innerText = "Offer: " + offer;
+        document.getElementById('productImage').src = image;
+        document.getElementById('productLink').href = link; // Set the product link
+        
+        document.getElementById('main-content').classList.add('blur'); 
+        document.getElementById('productModal').style.display = "flex";
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById('productModal').style.display = "none";
+        document.getElementById('main-content').classList.remove('blur'); 
+    }
+
+    // Close the modal when clicking outside of it
+    window.onclick = function(event) {
+        const modal = document.getElementById('productModal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+</script>
+>>>>>>> b3b32a91506480b3a5a9cf24aaa8b123cb49a07c
 </body>
 </html>
