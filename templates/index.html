@@ -8,52 +8,6 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-<<<<<<< HEAD
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 40px;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        th, td {
-            width: 12.5%;
-        }
-        a {
-            color: #0066cc;
-            text-decoration: none;
-        }
-        h2 {
-            margin-top: 0;
-        }
-        form {
-            margin-bottom: 20px;
-        }
-        input[type="text"] {
-            padding: 8px;
-            width: 70%;
-            margin-right: 10px;
-        }
-        input[type="submit"] {
-            padding: 8px;
-        }
-    </style>
-</head>
-<body>
-    <center><h1>BUYWISE</h1></center>
-<!-- 
-    <form action="/" method="GET">
-        <input type="text" name="query" placeholder="Enter product to search" required>
-        <input type="submit" value="Search">
-    </form> -->
-=======
         }
         table {
             width: 100%;
@@ -158,7 +112,6 @@
 </head>
 <div id="main-content"> <!-- Adding the main-content wrapper -->
     <center><h1>BUYWISE</h1></center>
->>>>>>> b3b32a91506480b3a5a9cf24aaa8b123cb49a07c
 
     <table>
         <thead>
@@ -178,26 +131,16 @@
             </tr>
         </thead>
         <tbody>
-<<<<<<< HEAD
-            {% for i in range(amazon_data|length) %}}
-            <tr>
-                <td>{{ amazon_data[i].name }}</td>
-=======
             {% for i in range(amazon_data|length) %}
             <tr>
                 <td><a href="javascript:void(0);" onclick="showModal('{{ amazon_data[i].name }}', '{{ amazon_data[i].cost }}', '{{ amazon_data[i].offer }}', '{{ amazon_data[i].image }}', '{{ amazon_data[i].link }}')" id="productnameandpic">{{ amazon_data[i].name }}</a></td>
                 <!-- <td>{{ amazon_data[i].name }}</td> -->
->>>>>>> b3b32a91506480b3a5a9cf24aaa8b123cb49a07c
                 <td><a href="{{ amazon_data[i].link }}" target="_blank">View Product</a></td>
                 <td>₹ {{ amazon_data[i].cost }}</td>
                 <td>{{ amazon_data[i].offer }}</td>
                 
                 {% if i < flipkart_data|length %}
-<<<<<<< HEAD
-                <td>{{ flipkart_data[i].name }}</td>
-=======
                 <td><a href="javascript:void(0);" onclick="showModal('{{ flipkart_data[i].name }}', '{{ flipkart_data[i].cost }}', '{{ flipkart_data[i].offer }}', '{{ flipkart_data[i].image }}', '{{ flipkart_data[i].link }}')" id="productnameandpic">{{ flipkart_data[i].name }}</a></td>
->>>>>>> b3b32a91506480b3a5a9cf24aaa8b123cb49a07c
                 <td><a href="{{ flipkart_data[i].link }}" target="_blank">View Product</a></td>
                 <td>{{ flipkart_data[i].cost }}</td>
                 <td>{{ flipkart_data[i].offer }}</td>
@@ -208,8 +151,6 @@
             {% endfor %}
         </tbody>
     </table>
-<<<<<<< HEAD
-=======
 </div>
 
 <div id="productModal" class="modal">
@@ -250,6 +191,5 @@
         }
     }
 </script>
->>>>>>> b3b32a91506480b3a5a9cf24aaa8b123cb49a07c
 </body>
 </html>
