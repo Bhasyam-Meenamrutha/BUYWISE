@@ -13,7 +13,7 @@ app = Flask(__name__)
 def scrape_amazon(query):
     chrome_options = Options()
     chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--no-sandbox") 
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("user-agent=Your User Agent Here")
 
@@ -67,11 +67,13 @@ def scrape_amazon(query):
                 "link": link,
                 "cost": cost,
                 "offer": discount,
-                "image": image_url  # Add image URL to the product data
+                "image": image_url  
             })
 
         except Exception as e:
             print(f"Error extracting data: {e}")
+    
+        
 
     driver.quit()
     return products
@@ -169,9 +171,9 @@ def scrape_flipkart_electronics(query):
 
 @app.route('/')
 def home():
-    return render_template('first.html')
+    return render_template('index.html')
 
-@app.route('/index', methods=['GET'])
+@app.route('/first', methods=['GET'])
 def index():
     query = request.args.get('query')
     amazon_data = []
@@ -186,7 +188,7 @@ def index():
             amazon_data = scrape_amazon(query)
             flipkart_data = scrape_flipkart_chairs(query)
         
-    return render_template('index.html', amazon_data=amazon_data, flipkart_data=flipkart_data)
+    return render_template('first.html', amazon_data=amazon_data, flipkart_data=flipkart_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
